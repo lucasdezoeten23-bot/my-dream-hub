@@ -3,6 +3,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { Task, TaskStatus, TaskPriority } from '@/types/task';
 import { useAuth } from './useAuth';
 import { toast } from 'sonner';
+import confetti from 'canvas-confetti';
 
 export const useTasks = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -43,6 +44,7 @@ export const useTasks = () => {
   };
 
   const updateTask = async (task: Task) => {
+    const oldTask = tasks.find((t) => t.id === task.id);
     const { error } = await supabase
       .from('tasks')
       .update({
@@ -56,7 +58,12 @@ export const useTasks = () => {
       })
       .eq('id', task.id);
     if (error) toast.error('Failed to update task');
-    else fetchTasks();
+    else {
+      if (task.status === 'done' && oldTask?.status !== 'done') {
+        confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+      }
+      fetchTasks();
+    }
   };
 
   const deleteTask = async (id: string) => {
