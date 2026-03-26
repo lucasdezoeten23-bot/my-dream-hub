@@ -144,6 +144,7 @@
     --info: 210 70% 55%;
     --info-foreground: 0 0% 100%;
   }
+}
 
 @layer base {
   * {
