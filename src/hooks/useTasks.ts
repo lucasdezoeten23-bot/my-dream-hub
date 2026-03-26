@@ -3,6 +3,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { Task, TaskStatus, TaskPriority } from '@/types/task';
 import { useAuth } from './useAuth';
 import { toast } from 'sonner';
+import confetti from 'canvas-confetti';
 
 export const useTasks = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
