@@ -3,7 +3,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useTheme } from 'next-themes';
-import { Sun, Moon, Monitor } from 'lucide-react';
+import { Sun, Moon, Monitor, Sunset } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const Settings = () => {
@@ -12,6 +12,7 @@ const Settings = () => {
 
   const themeOptions = [
     { value: 'light', label: 'Light', icon: Sun },
+    { value: 'afternoon', label: 'Afternoon', icon: Sunset },
     { value: 'dark', label: 'Dark', icon: Moon },
     { value: 'system', label: 'System', icon: Monitor },
   ] as const;

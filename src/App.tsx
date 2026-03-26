@@ -28,7 +28,7 @@ const AuthRoute = ({ children }: { children: React.ReactNode }) => {
 };
 
 const App = () => (
-  <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+  <ThemeProvider attribute="class" defaultTheme="light" enableSystem themes={['light', 'dark', 'afternoon', 'system']}>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
